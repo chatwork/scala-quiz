@@ -1,0 +1,17 @@
+/logs/
+/project/*-shim.sbt
+/project/project/
+/project/target/
+/target/
+
+*env.sh
+
+.classpath
+.project
+
+.idea*
+
+target
+
+.DS_Store
+thumbs.db
