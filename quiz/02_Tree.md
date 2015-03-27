@@ -30,7 +30,7 @@ case class BTree(node: Node) {
 - リーフは、必ず一つの値を保持する(値を持たないリーフは存在しない)。
 - 値は問題を簡単にするためInt型とする。(任意の型に対応できるようにしてもよい)
 
-0) ノードの値を組み合わせてデータを作成できるようにせよ(必須問題)
+0) ノードの値を組み合わせてデータを作成できるようにせよ(必須問題)。
 
 ```scala
 val bTree1 = BTree(Leaf(1))
@@ -38,7 +38,7 @@ val bTree2 = BTree(Branch(Leaf(1), 2, Leaf(3)))
 val bTree3 = BTree(Branch(Branch(Leaf(1), 2, Leaf(3)), 4, Branch(Leaf(5), 6, Leaf(7))))
 ```
 
-1) すべてのノードの数を計算せよ
+1) すべてのノードの数を計算せよ(必須問題)。
 
 ```scala
 val bTree = BTree(...)
