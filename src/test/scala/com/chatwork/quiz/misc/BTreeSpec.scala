@@ -16,7 +16,7 @@ class BTreeSpec extends FunSpec with Matchers {
       BTree(Branch(Leaf(1), 2, Leaf(3))).max shouldBe 3
     }
   }
-a
+
   describe("BTree#min") {
     it("should return the min value in the BTree") {
       BTree(Branch(Leaf(1), 2, Leaf(3))).min shouldBe 1
