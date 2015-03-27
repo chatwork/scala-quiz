@@ -1,6 +1,73 @@
-# Tree型
+# 二分木データ構造をScalaで実装する
 
-## 1. 問題
-https://gist.github.com/j5ik2o/7332812
+以下の前提のもと、下記機能を実現する実装を記述せよ。
 
-## 2. 追加問題
+<img src="https://dl.dropboxusercontent.com/u/557577/btree.png" alt="diagram" width="50%"/>
+
+- 木にはブランチ(枝)とリーフ(葉)があるものとする。ブランチとリーフをノードとし、以下の型階層を前提とする。
+
+```scala
+trait Node {
+  // ...
+}
+
+case class Branch(...) extends Node {
+  // ...
+}
+
+case class Leaf(...) extends Node {
+  // ...
+}
+
+case class BTree(node: Node) {
+  // ...
+}
+
+```
+
+- ブランチは、一つの値と、右と左にブランチもしくはリーフを必ず保持する。つまり、左右対象です。
+    - ただし、保持する値の関係が 右 > 左 となるようにすること。
+- リーフは、必ず一つの値を保持する(値を持たないリーフはない)。
+- 値は問題を簡単にするためInt型とする。
+
+0) ノードの値を組み合わせてデータを作成できるようにせよ
+
+```scala
+val bTree1 = BTree(Leaf(1))
+val bTree2 = BTree(Branch(Leaf(1), 2, Leaf(3)))
+val bTree3 = BTree(Branch(Branch(Leaf(1), 2, Leaf(3)), 4, Branch(Leaf(5), 6, Leaf(7))))
+```
+
+1) すべてのノードの数を計算せよ
+
+```scala
+val bTree = BTree(...)
+val size = bTree.size
+```
+
+2) すべてのノードが保持する値から、最大値/最小値/合計値/平均値を計算せよ
+
+```scala
+val bTree = BTree(...)
+val max = bTree.max
+val min = bTree.min
+val sum = bTree.sum
+val avg = bTree.avg
+```
+
+3) すべてのノードが保持する値から、特定の値を持つノードを検索できるようにせよ(二分木の構造を生かした検索を行うこと)。
+
+```scala
+val bTree = BTree(...)
+val node: Option[Node] = bTree.find(1)
+```
+
+余裕ある人は、
+
+```scala
+val bTree = BTree(List(1, 2, 3))
+println(bTree) // BTree(Branch(Leaf(1), 2, Leaf(3)))
+```
+と、ListからBTreeを生成できるようにしてみてください。
+(Listはソートされている前提でよい)
+
