@@ -53,3 +53,7 @@ sealed trait MyOption[+A]  {
 sealed trait MyOption[+A]  {
   def orElse[B >: A](elseValue: => MyOption[B]): MyOption[B]
 ```
+
+### テスト
+
+[src/test/scala/com/chatwork/quiz/MyOptionSpec](../src/test/scala/com/chatwork/quiz/MyOptionSpec.scala)

@@ -69,3 +69,7 @@ val bTree = BTree(List(1, 2, 3))
 println(bTree) // BTree(Branch(Leaf(1), 2, Leaf(3)))
 ```
 
+#### テスト
+
+[src/test/scala/com/chatwork/quiz/misc/BTreeSpec](../src/test/scala/com/chatwork/quiz/misc/BTreeSpec.scala)
+

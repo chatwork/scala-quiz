@@ -123,3 +123,5 @@ sealed trait MyList[+A] {
 
 }
 ```
+
+[src/test/scala/com/chatwork/quiz/collection/MyListSpec](../src/test/scala/com/chatwork/quiz/collection/MyListSpec.scala)

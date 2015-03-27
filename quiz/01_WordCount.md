@@ -18,7 +18,7 @@ object WordCounter {
 
 #### テスト
 
-[src/test/scala/misc/WordCounterSpec](../src/test/scala/misc/WordCounterSpec)
+[src/test/scala/com/chatwork/quiz/misc/WordCounterSpec](../src/test/scala/com/chatwork/quiz/misc/WordCounterSpec.scala)
 
 
 #### 参考
