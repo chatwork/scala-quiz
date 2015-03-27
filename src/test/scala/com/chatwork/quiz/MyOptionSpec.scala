@@ -4,49 +4,68 @@ import org.scalatest.{Matchers, FunSpec}
 
 class MyOptionSpec extends FunSpec with Matchers {
 
-  describe("MyOption") {
-    it("get") {
-      Some(100).get shouldEqual MySome(100).get
+  describe("MyOption#get") {
+    it("should return a value if it's not empty") {
+      MySome(100).get shouldBe 100
+    }
+    it("should throw a NoSuchElementException if it's empty") {
       intercept[NoSuchElementException] {
         MyNone.get
       }
     }
-    it("isEmpty") {
-      Some(100).isEmpty shouldEqual MySome(100).isEmpty
-      None.isEmpty shouldEqual MyNone.isEmpty
+  }
+
+  describe("MyOption#isEmpty") {
+    it("should be true if it is empty") {
+      MyNone.isEmpty shouldBe true
     }
-    it("map") {
-      val twice = (n: Int) => n * 2
-      MySome(100).map(twice).get shouldEqual Some(100).map(twice).get
+    it("should be false if it contains a value") {
+      MySome(100).isEmpty shouldBe false
     }
-    it("flatMap") {
-      val twice = (n: Int) => n * 2
-      MySome(100).flatMap(e => MySome(twice(e))).get shouldEqual Some(100).flatMap(e => Some(twice(e))).get
+  }
+
+  describe("MyOption#map") {
+    it("should return a MySome containing the result of applying f") {
+      MySome(100).map(_ * 2) shouldBe MySome(200)
     }
-    it("filter") {
-      val f = (n: Int) => n > 2
-      MySome(100).filter(f).get shouldEqual Some(100).filter(f).get
+    it("should return MyNone if it is empty") {
+      MyNone.map(_ => false) shouldBe MyNone
     }
-    it("for") {
-      val value = Some(Some(100))
-      val myValue = MySome(MySome(100))
-      val originalResult = for {
-        a <- value
-        b <- a
-      } yield b + 1
-      val myResult = for {
-        a <- myValue
-        b <- a
-      } yield b + 1
-      myResult.get shouldEqual originalResult.get
+  }
+
+  describe("MyOption#flatMap") {
+    it("should return the result of applying f") {
+      MySome(100).flatMap(e => MySome(e * 2)) shouldBe MySome(200)
     }
-    it("getOrElse") {
-      MySome(100).getOrElse(200) shouldEqual Some(100).getOrElse(200)
-      MyNone.getOrElse(200) shouldEqual None.getOrElse(200)
+    it("should return MyNone if it is empty") {
+      MyNone.flatMap(_ => MySome(false)) shouldBe MyNone
     }
-    it("orElse") {
-      MySome(100).orElse(MySome(200)) shouldBe MySome(100)
-      MyNone.orElse(MySome(200)) shouldBe MySome(200)
+  }
+
+  describe("MyOption#filter") {
+    it("should return MySome if the predicate returns true") {
+      MySome(100).filter(_ > 0) shouldBe MySome(100)
+    }
+    it("should return MyNone if the predicate returns false") {
+      MySome(100).filter(_ < 0) shouldBe MyNone
+    }
+  }
+
+  describe("MyOption#getOrElse") {
+    it("should return the MyOption's value if it contains a value") {
+      MySome(100).getOrElse(20) shouldBe 100
+    }
+    it("should return the default value if it is empty") {
+      MyNone.getOrElse(20) shouldBe 20
+    }
+  }
+
+  describe("MyOption#orElse") {
+    it("should return this MyOption value if it is not empty") {
+      MySome(100).orElse(MySome(20)) shouldBe MySome(100)
+    }
+    it("should return the default value if it is empty") {
+      MyNone.orElse(MySome(20)) shouldBe MySome(20)
     }
   }
 

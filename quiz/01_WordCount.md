@@ -16,18 +16,9 @@ object WordCounter {
 }
 ```
 
+#### テスト
 
-```scala
-val lines = List("apple banana", "orange apple mango", "kiwi papaya orange","mango orange muscat apple")
-
-val result = WordCounter.countWord(lines)
-
-if (result == Map("banana" -> 1, "muscat" -> 1, "orange" -> 3, "mango" -> 2, "apple" -> 3, "kiwi" -> 1, "papaya" -> 1)) {
-  println("正解")
-} else {
-  println("不正解")
-}
-```
+[src/test/scala/misc/WordCounterSpec](../src/test/scala/misc/WordCounterSpec)
 
 
 #### 参考

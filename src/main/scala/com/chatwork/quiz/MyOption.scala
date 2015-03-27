@@ -22,15 +22,15 @@ case object MyNone extends MyOption[Nothing] {
 
   def get = ???
 
-  def isEmpty = ???
+  def isEmpty: Boolean = ???
 
 }
 
 case class MySome[+A](x: A) extends MyOption[A] {
 
-  def get = ???
+  def get: A = ???
 
-  def isEmpty = ???
+  def isEmpty: Boolean = ???
 }
 
 object MyOption {
