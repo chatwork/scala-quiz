@@ -49,10 +49,10 @@ val size = bTree.size
 
 ```scala
 val bTree = BTree(...)
-val max = bTree.max
-val min = bTree.min
-val sum = bTree.sum
-val avg = bTree.avg
+val max: Int = bTree.max
+val min: Int = bTree.min
+val sum: Int = bTree.sum
+val avg: Double = bTree.avg
 ```
 
 3) すべてのノードが保持する値から、特定の値を持つノードを検索できるようにせよ(必須問題)。
