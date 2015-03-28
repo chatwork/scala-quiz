@@ -11,7 +11,7 @@ List("apple banana", "orange apple mango", "kiwi papaya orange","mango orange mu
 ```scala
 object WordCounter {
 
-  def countWord(line: String): Map[String, Int] = ???
+  def countWord(line: List[String]): Map[String, Int] = ???
 
 }
 ```
