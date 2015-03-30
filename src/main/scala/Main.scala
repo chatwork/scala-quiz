@@ -1,4 +1,3 @@
 object Main extends App {
 
-
 }

@@ -1,6 +1,6 @@
 package com.chatwork.quiz
 
-sealed trait MyOption[+A]  {
+sealed trait MyOption[+A] {
 
   def get: A
 
