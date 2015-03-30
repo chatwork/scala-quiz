@@ -16,13 +16,17 @@ sealed trait MyList[+A] {
   def foldRight[B](z: B)(f: (A, B) => B): B = ???
 
   // Normal
+  // scalastyle:off
   def ::[B >: A](b: B): MyList[B] = ???
+  // scalastyle:on
 
   // Normal
   def reverse: MyList[A] = ???
 
   // Normal
+  // scalastyle:off
   def ++[B >: A](b: MyList[B]): MyList[B] = ???
+  // scalastyle:on
 
   // Normal
   def map[B](f: A => B): MyList[B] = ???
