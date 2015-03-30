@@ -1,22 +1,68 @@
 package com.chatwork.quiz.misc
 
-trait Node {
+sealed trait Node {
+  
+  val value: Int
+ 
+  val size: Int
+  
+  val sum: Int
+  
+  val avg: Double
+  
+  val max: Int
+  
+  val min: Int
+ 
+  def find(value: => A): Option[Node]
+  
+}
+
+case class Branch(left: Node, value: Int, right: Node) extends Node {
+
+  val size: Int = ???
+  
+  val sum: Int = ???
+  
+  val avg: Double = ???
+  
+  val max: Int = ???
+  
+  val min: Int = ???
+ 
+  def find(value: => A): Option[Node] = ???
 
 }
 
-case class Branch(left: Node, value: Int, right: Node) extends Node
+case class Leaf(value: Int) extends Node {
 
-case class Leaf(value: Int) extends Node
+  val size: Int = ???
+  
+  val sum: Int = ???
+  
+  val avg: Double = ???
+  
+  val max: Int = ???
+  
+  val min: Int = ???
+ 
+  def find(value: => A): Option[Node] = ???
+  
+}
 
 case class BTree(node: Node) {
 
-  def size: Int = ???
-  def sum: Int = ???
-  def max: Int = ???
-  def min: Int = ???
-  def avg: Int = ???
+  lazy val size: Int = node.size
+  
+  lazy val sum: Int = node.sum
 
-  def find(value: Int): Option[Node] = ???
+  lazy val avg: Double = node.avg
+  
+  lazy val max: Int = node.max
+  
+  lazy val min: Int = node.min
+
+  def find(value: Int): Option[Node] = node.find(value)
 
 }
 
