@@ -107,6 +107,10 @@ sealed trait MyList[+A] {
   // Normal
   def filter(f: A => Boolean): MyList[A]
 
+  // Normal: 条件 - filterと同様の実装でも構いません。
+  // Hard:   条件 - 中間リストを生成しないように実装してください。
+  def withFilter(f: A => Boolean): MyList[A]
+  
 }
 ```
 
