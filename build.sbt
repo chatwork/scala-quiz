@@ -1,3 +1,5 @@
+import scalariform.formatter.preferences._
+
 name := "sandbox"
 
 version := "1.0"
@@ -9,6 +11,15 @@ scalacOptions ++= Seq("-encoding", "UTF-8", "-feature", "-unchecked", "-deprecat
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
 
 scalariformSettings
+
+
+ScalariformKeys.preferences :=
+      ScalariformKeys.preferences.value
+        .setPreference(AlignParameters, true)
+        .setPreference(AlignSingleLineCaseStatements, true)
+        .setPreference(DoubleIndentClassDeclaration, true)
+        .setPreference(PreserveDanglingCloseParenthesis, true)
+        .setPreference(MultilineScaladocCommentsStartOnFirstLine, false)
 
 lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
 
