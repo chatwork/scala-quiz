@@ -1,4 +1,4 @@
-# 二分木データ構造をScalaで実装する
+# 二分木データ構造 実装問題
 
 以下の前提のもと、下記機能を[テスト](../src/test/scala/com/chatwork/quiz/misc/BTreeSpec.scala)がパスするように実装してください。
 
