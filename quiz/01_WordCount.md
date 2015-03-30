@@ -6,12 +6,12 @@
 List("apple banana", "orange apple mango", "kiwi papaya orange","mango orange muscat apple")
 ```
 
-に含まれる、フルーツの数を数える関数 `countWord` を実装してください。
+に含まれる、フルーツの数を数える関数 `countWords` を[テスト](../src/test/scala/com/chatwork/quiz/misc/WordCounterSpec.scala)がパスするように実装してください。
 
 ```scala
 object WordCounter {
 
-  def countWord(line: List[String]): Map[String, Int] = ???
+  def countWords(line: List[String]): Map[String, Int] = ???
 
 }
 ```
