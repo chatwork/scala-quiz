@@ -6,30 +6,6 @@ import scala.math.Ordering.IntOrdering
 
 class BTreeSpec extends FunSpec with Matchers  {
 
-  implicit val i = new Fractional[Int] with IntOrdering {
-    override def div(x: Int, y: Int): Int = x / y
-
-    override def toDouble(x: Int): Double = x.toDouble
-
-    override def toFloat(x: Int): Float = x.toFloat
-
-    override def toLong(x: Int): Long = x.toLong
-
-    override def toInt(x: Int): Int = x
-
-    override def fromInt(x: Int): Int = x
-
-    override def negate(x: Int): Int =  x
-
-    override def times(x: Int, y: Int): Int = x * y
-
-    override def minus(x: Int, y: Int): Int = x - y
-
-    override def plus(x: Int, y: Int): Int =  x + y
-  }
-
-  implicit def toBigDecimal(n: Int): scala.math.BigDecimal = scala.math.BigDecimal(n)
-
   describe("BTree#size") {
     it("should return the number of elements in the BTree") {
       BTree(Branch(Leaf(1), 2, Leaf(3))).size shouldBe 3
