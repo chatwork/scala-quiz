@@ -1,6 +1,6 @@
 # 二分木データ構造をScalaで実装する
 
-以下の前提のもと、下記機能を実現する実装を記述せよ。
+以下の前提のもと、下記機能を[テスト](../src/test/scala/com/chatwork/quiz/misc/BTreeSpec.scala)がパスするように実装してください。
 
 <img src="https://dl.dropboxusercontent.com/u/557577/btree.png" alt="diagram" width="50%"/>
 
