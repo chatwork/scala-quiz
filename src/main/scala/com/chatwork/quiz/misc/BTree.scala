@@ -45,6 +45,13 @@ sealed trait Node {
 
 }
 
+/**
+ * 枝を表す[[Node]]。
+ *
+ * @param left　左の[[Node]]
+ * @param value 値
+ * @param right 右の[[Node]]
+ */
 case class Branch(left: Node, value: Int, right: Node) extends Node {
 
   val size: Int = ???
@@ -61,6 +68,11 @@ case class Branch(left: Node, value: Int, right: Node) extends Node {
 
 }
 
+/**
+ * 葉を表す[[Node]]。
+ *
+ * @param value 値
+ */
 case class Leaf(value: Int) extends Node {
 
   val size: Int = ???
