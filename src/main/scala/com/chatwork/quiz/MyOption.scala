@@ -1,5 +1,10 @@
 package com.chatwork.quiz
 
+/**
+ * 値が存在する・しないの両状態を表すオブジェクト。いわゆるMaybeモナド。
+ *
+ * @tparam A 値の型
+ */
 sealed trait MyOption[+A] {
 
   /**
