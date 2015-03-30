@@ -14,7 +14,7 @@ sealed trait Node {
   
   val min: Int
  
-  def find(value: => A): Option[Node]
+  def find(value: Int): Option[Node]
   
 }
 
@@ -30,7 +30,7 @@ case class Branch(left: Node, value: Int, right: Node) extends Node {
   
   val min: Int = ???
  
-  def find(value: => A): Option[Node] = ???
+  def find(value: Int): Option[Node] = ???
 
 }
 
@@ -46,7 +46,7 @@ case class Leaf(value: Int) extends Node {
   
   val min: Int = ???
  
-  def find(value: => A): Option[Node] = ???
+  def find(value: Int): Option[Node] = ???
   
 }
 
