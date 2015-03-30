@@ -11,11 +11,11 @@ trait Node {
   // ...
 }
 
-case class Branch(...) extends Node {
+case class Branch(left: Node, value: Int, right: Node) extends Node {
   // ...
 }
 
-case class Leaf(...) extends Node {
+case class Leaf(value: Int) extends Node {
   // ...
 }
 
