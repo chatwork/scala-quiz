@@ -81,7 +81,7 @@ case object MyNone extends MyOption[Nothing] {
 
 /**
  * 値が存在する場合の[[MyOption]]。
- * 
+ *
  * @param value 値
  * @tparam A 値の型
  */
