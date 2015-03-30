@@ -1,5 +1,8 @@
 package com.chatwork.quiz.misc
 
+/**
+ * ワードをカウントするオブジェクト。
+ */
 object WordCounter {
 
   /**
