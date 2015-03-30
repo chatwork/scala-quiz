@@ -1,6 +1,6 @@
 # MyOption型 実装課題
 
-問題を解きながら、MyOption型をテストがパスするように実装してみましょう。
+問題を解きながら、MyOption型を[テスト](../src/test/scala/com/chatwork/quiz/MyOptionSpec.scala)がパスするように実装してみましょう。
 
 
 ## 1. MyOption, MySome, MyNoneのtraitを用意しましょう
