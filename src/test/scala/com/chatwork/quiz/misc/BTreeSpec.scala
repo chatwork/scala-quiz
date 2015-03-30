@@ -31,7 +31,7 @@ class BTreeSpec extends FunSpec with Matchers {
 
   describe("BTree#avg") {
     it("should return the average of values in the BTree") {
-      BTree(Branch(Leaf(1), 2, Leaf(3))).avg shouldBe 2
+      BTree(Branch(Leaf(1), 2, Leaf(3))).avg shouldBe 2.0d
     }
   }
   
