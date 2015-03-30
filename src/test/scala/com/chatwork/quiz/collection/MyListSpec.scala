@@ -7,8 +7,8 @@ class MyListSpec extends FunSpec with Matchers {
 
   describe("MyList#apply") {
     it("should return a new MyList instance") {
-      MyList.apply(1, 2, 3) shouldEqual MyCons(1, MyCons(2, MyCons(3, MyNil)))
-      MyList.apply() shouldEqual MyNil
+      MyList(1, 2, 3) shouldEqual MyCons(1, MyCons(2, MyCons(3, MyNil)))
+      MyList() shouldEqual MyNil
     }
   }
 
