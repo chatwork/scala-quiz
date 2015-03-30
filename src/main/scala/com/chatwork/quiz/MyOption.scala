@@ -63,6 +63,9 @@ sealed trait MyOption[+A] {
 
 }
 
+/**
+ * 値が存在ない場合の[[MyOption]]。
+ */
 case object MyNone extends MyOption[Nothing] {
 
   def get: Nothing = ???
@@ -71,7 +74,13 @@ case object MyNone extends MyOption[Nothing] {
 
 }
 
-case class MySome[+A](x: A) extends MyOption[A] {
+/**
+ * 値が存在する場合の[[MyOption]]。
+ * 
+ * @param value 値
+ * @tparam A 値の型
+ */
+case class MySome[+A](value: A) extends MyOption[A] {
 
   def get: A = ???
 
