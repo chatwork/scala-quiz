@@ -34,6 +34,12 @@ class BTreeSpec extends FunSpec with Matchers {
       BTree(Branch(Leaf(1), 2, Leaf(3))).avg shouldBe 2
     }
   }
+  
+  describe("BTree#find") {
+    it("should return a node has the value in the BTree") {
+      BTree(Branch(Leaf(1), 2, Leaf(3))).avg shouldBe 2
+    }
+  }
 
   describe("BTree#apply") {
     it("should return a new BTree from List[Int]") {
