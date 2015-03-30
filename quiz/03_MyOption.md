@@ -1,4 +1,4 @@
-# MyOption型
+# MyOption型 実装課題
 
 問題を解きながら、Option型を実装してみましょう。
 
