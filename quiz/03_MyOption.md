@@ -2,24 +2,7 @@
 
 問題を解きながら、MyOption型を[テスト](../src/test/scala/com/chatwork/quiz/MyOptionSpec.scala)がパスするように実装してみましょう。
 
-
-## 1. MyOption, MySome, MyNoneのtraitを用意しましょう
-
-まずは下記のコードを写経してください。
-
-```scala
-sealed trait MyOption[+A]
-case object MyNone extends MyOption[Nothing]
-case class MySome[+A](x: A) extends MyOption[A]
-```
-
-### 1.1 「sealed」について説明してください
-
-例えば、パターンマッチするときに、sealedキーワードをつけているとどんなメリットがありますか？
-
-### 1.2 「+」(型引数の変位指定) について調べてみてください (丸投げ)
-
-## 2. MyOptionのコンパニオンオブジェクトとapplyを実装してください (難易度: Easy) 
+## 1. MyOptionのコンパニオンオブジェクトとapplyを実装してください (難易度: Easy) 
 
 ```scala
 object MyOption {
@@ -27,7 +10,7 @@ object MyOption {
 }
 ```
 
-## 3. MyOption型にget/getOrElse/isEmptyを実装してください (難易度: Easy)
+## 2. MyOption型にget/getOrElse/isEmptyを実装してください (難易度: Easy)
 
 ```scala
 sealed trait MyOption[+A]  {
@@ -37,7 +20,7 @@ sealed trait MyOption[+A]  {
 }
 ```
 
-## 4. MyOption型にmap/flatMapを実装してください (難易度: Normal)
+## 3. MyOption型にmap/flatMapを実装してください (難易度: Normal)
 
 ```scala
 sealed trait MyOption[+A]  {
@@ -47,7 +30,7 @@ sealed trait MyOption[+A]  {
 }
 ```
 
-## 5. MyOption型にorElseメソッドを実装してください (難易度: Normal)
+## 4. MyOption型にorElseメソッドを実装してください (難易度: Normal)
 
 ```scala
 sealed trait MyOption[+A]  {

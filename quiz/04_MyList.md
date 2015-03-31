@@ -8,26 +8,11 @@ ScalaのList型は、単方向リンクのリストです。
  - mutable.LinkedListはミュータブルな単方向リンクのリスト
  - mutable.DoubleLinkedListは双方向リンクのリスト
 
-## 0. 準備
-
-今回の課題は、ScalaTestを使ってテストを書いてみてください。(時間が足りない方はassertでも大丈夫です。)
+## 1. 準備
 
 ```
 $ git clone https://github.com/chatwork/scala-quiz
 ```
-
-## 1. MyList, MyNil, MyConsのtraitを用意しましょう
-
-まずは下記のコードを写経してください。
-
-「Cons」はリストの各要素を表現するクラスです。ListをConstruct(構成)する、から来ています。
-
-```scala
-sealed trait MyList[+A]
-case object MyNil extends MyList[Nothing]
-case class MyCons[+A](head: A, tail: MyList[A]) extends MyList[A]
-```
-
 
 ## 2. MyListのコンパニオンオブジェクトと、empty, applyを実装してください (難易度: Easy, Normal)
 
