@@ -8,7 +8,7 @@ head :: tail は、tailも head :: tail となるので、head :: ( head :: ( he
 
 (参考) 他にも下記のような線形リストがScalaには標準のコレクションとして用意されています。
  - mutable.LinkedListはミュータブルな単方向リンクのリスト
- - mutable.DoubleLinkedListは双方向リンクのリスト
+ - mutable.DoubleLinkedListはミュータブルな双方向リンクのリスト
 
 ## 1. 準備
 
