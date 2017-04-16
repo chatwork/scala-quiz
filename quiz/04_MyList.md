@@ -4,7 +4,7 @@
 
 ScalaのList型は、要素1個の head と 残りのListの tail で構成される、単方向リンクのリストです。
 
-head :: tail は、tailも head :: tail となるので、head :: ( head :: ( head :: 空のList ) のような入れ子構造になります。
+head :: tail は、tailも head :: tail となるので、head :: ( head :: ( head :: 空のList ) ) のような入れ子構造になります。
 
 他にも下記のような線形リストがScalaには標準のコレクションとして用意されています。
  - mutable.LinkedListはミュータブルな単方向リンクのリスト
