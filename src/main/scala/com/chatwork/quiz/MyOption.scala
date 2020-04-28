@@ -11,7 +11,7 @@ sealed trait MyOption[+A] {
     * 格納された値を返す。
     *
     * @return 値
-    * @throws 値が存在しない場合 NoSuchElementException をスローする
+    * @throws NoSuchElementException 値が存在しない場合スローする
     */
   def get: A
 
@@ -47,6 +47,15 @@ sealed trait MyOption[+A] {
     * @return 新しい [[MyOption]]
     */
   def filter(f: A => Boolean): MyOption[A] = ???
+
+  /**
+   * 値が存在する場合に、値をフィルタリングする。
+   * 本来であれば中間状態を作成しないものだが今回はfilterで実装する
+   *
+   * @param f フィルターのための述語関数
+   * @return 新しい [[MyOption]]
+   */
+  def withFilter(f: A => Boolean): MyOption[A] = filter(f)
 
   /**
     * 格納された値を返す。値がない場合は指定された値を返す。
@@ -106,5 +115,17 @@ object MyOption {
     * @return [[MyOption]]
     */
   def apply[A](value: A): MyOption[A] = ???
+
+  /**
+    * for式 練習問題1
+    * @return [[MyOption]] MySome(6)
+    */
+  def translateToForComprehensions1: MyOption[Int] = ???
+
+  /**
+   * for式 練習問題2
+   * @return [[MyOption]] MyNone
+   */
+  def translateToForComprehensions2: MyOption[Int] = ???
 
 }

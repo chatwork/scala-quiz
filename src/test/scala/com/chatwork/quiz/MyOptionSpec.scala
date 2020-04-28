@@ -70,4 +70,34 @@ class MyOptionSpec extends AnyFunSpec with Matchers {
     }
   }
 
+  describe("MyOption#translateToForComprehensions1") {
+    it("should return MySome(6)") {
+      val expected =
+        MyOption(1).flatMap { one =>
+          MyOption(2).flatMap { two =>
+            MyOption(3).map { three =>
+              one + two + three
+            }
+          }
+        }
+      MyOption.translateToForComprehensions1 shouldBe expected
+      MyOption.translateToForComprehensions1 shouldBe MySome(6)
+    }
+  }
+
+  describe("MyOption#translateToForComprehensions2") {
+    it("should return MyNone") {
+      val expected =
+        MyOption(1).flatMap { one =>
+          MyOption(-2).withFilter(_ > 0).flatMap { two =>
+            MyOption(3).map { three =>
+              one + two + three
+            }
+          }
+        }
+      MyOption.translateToForComprehensions2 shouldBe expected
+      MyOption.translateToForComprehensions2 shouldBe MyNone
+    }
+  }
+
 }

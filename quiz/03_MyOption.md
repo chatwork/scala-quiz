@@ -37,6 +37,31 @@ sealed trait MyOption[+A]  {
   def orElse[B >: A](elseValue: => MyOption[B]): MyOption[B]
 ```
 
+## 5. MyOption型のコンパニオンオブジェクトに下記を**for式で表現した**メソッドを実装してください (難易度: Normal)
+
+```scala
+object MyOption {
+  def translateToForComprehensions1: MyOption[Int] = {
+    MyOption(1).flatMap { one =>
+      MyOption(2).flatMap { two =>
+        MyOption(3).map { three =>
+          one + two + three
+        }
+      }
+    }
+  }
+  def translateToForComprehensions2: MyOption[Int] = {
+    MyOption(1).flatMap { one =>
+      MyOption(-2).withFilter(_ > 0).flatMap { two =>
+        MyOption(3).map { three =>
+          one + two + three
+        }
+      }
+    }
+  }
+}
+```
+
 ### テスト
 
 [src/test/scala/com/chatwork/quiz/MyOptionSpec](../src/test/scala/com/chatwork/quiz/MyOptionSpec.scala)
