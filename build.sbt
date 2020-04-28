@@ -3,7 +3,7 @@ lazy val root: Project = (project in file("."))
     organization  := "com.chatwork",
     name          := "scala-quiz",
     version       := "1.0",
-    scalaVersion  := "2.11.4",
+    scalaVersion  := "2.13.2",
     scalacOptions ++= Seq(
       "-encoding",
       "UTF-8",
@@ -12,6 +12,6 @@ lazy val root: Project = (project in file("."))
       "-deprecation"
     ),
     libraryDependencies ++= Seq(
-      "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test"
+      "org.scalatest" %% "scalatest" % "3.1.1" % Test
     )
   )
