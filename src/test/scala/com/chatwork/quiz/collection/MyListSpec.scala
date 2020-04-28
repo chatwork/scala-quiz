@@ -1,9 +1,10 @@
 package com.chatwork.quiz.collection
 
 import com.chatwork.quiz.{ MyNone, MySome }
-import org.scalatest.{ FunSpec, Matchers }
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class MyListSpec extends FunSpec with Matchers {
+class MyListSpec extends AnyFunSpec with Matchers {
 
   describe("MyList#apply") {
     it("should return a new MyList instance") {
