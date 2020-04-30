@@ -1,9 +1,10 @@
 package com.chatwork.quiz.collection
 
-import com.chatwork.quiz.{MySome, MyNone}
-import org.scalatest.{FunSpec, Matchers}
+import com.chatwork.quiz.{ MyNone, MySome }
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class MyListSpec extends FunSpec with Matchers {
+class MyListSpec extends AnyFunSpec with Matchers {
 
   describe("MyList#apply") {
     it("should return a new MyList instance") {
@@ -50,7 +51,8 @@ class MyListSpec extends FunSpec with Matchers {
 
   describe("MyList#flatMap") {
     it("should apply an operator to each element in the list and flatten") {
-      MyList(MyList(1, 2), MyList(3, 4), MyList(5, 6), MyList(7, 8)).flatMap(_.map(_ * 2)) shouldEqual MyList(2, 4, 6, 8, 10, 12, 14, 16)
+      MyList(MyList(1, 2), MyList(3, 4), MyList(5, 6), MyList(7, 8))
+        .flatMap(_.map(_ * 2)) shouldEqual MyList(2, 4, 6, 8, 10, 12, 14, 16)
     }
   }
 
@@ -70,7 +72,7 @@ class MyListSpec extends FunSpec with Matchers {
   describe("for comprehension") {
     it("should provide for comprehension") {
       (for {
-        suit <- MyList("Diamond", "Heart", "Spade", "Club")
+        suit   <- MyList("Diamond", "Heart", "Spade", "Club")
         number <- MyList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
         if suit == "Diamond"
       } yield {

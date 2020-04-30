@@ -1,8 +1,9 @@
 package com.chatwork.quiz
 
-import org.scalatest.{Matchers, FunSpec}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class MyOptionSpec extends FunSpec with Matchers {
+class MyOptionSpec extends AnyFunSpec with Matchers {
 
   describe("MyOption#get") {
     it("should return a value if it's not empty") {
