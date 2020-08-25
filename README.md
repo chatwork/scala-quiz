@@ -10,3 +10,31 @@
 
 [4. MyList問題](quiz/04_MyList.md)
 
+# Setup
+
+```
+brew install sbt
+```
+
+# How to Challenge
+各問題で用意された`.scala`ファイルを直接編集してください
+例) `src/main/scala/com/chatwork/quiz/misc/WordCounter.scala`
+
+動作確認は`sbt run`ではなく、自動テストにて行います。
+下記のコマンドを参考に、各問題で用意されたテストを実行してください。
+
+※ sbtは複数コマンドを空白で繋げることができるため、コマンドと引数をセットにして`''`で囲んでください。
+
+```
+sbt test:compile
+sbt 'testOnly com.chatwork.quiz.misc.WordCounterSpec'
+```
+
+または、対話モードに移行すると、スペース区切りで入力ができます。
+```
+sbt
+```
+
+```
+testOnly com.chatwork.quiz.misc.WordCounterSpec
+```
