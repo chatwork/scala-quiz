@@ -54,7 +54,7 @@ sealed trait Node {
   */
 case class Branch(left: Node, value: Int, right: Node) extends Node {
 
-  val size: Int = ???
+  val size: Int = left.size + right.size + 1
 
   val sum: Int = ???
 
@@ -75,7 +75,7 @@ case class Branch(left: Node, value: Int, right: Node) extends Node {
   */
 case class Leaf(value: Int) extends Node {
 
-  val size: Int = ???
+  val size: Int = 1
 
   val sum: Int = ???
 
