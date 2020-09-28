@@ -65,18 +65,8 @@ case class Branch(left: Node, value: Int, right: Node) extends Node {
   val min: Int = List(left.max, right.max, value).min
 
   def find(value: Int): Option[Node] = {
-
-    lazy val l = left find value
-    lazy val r = right find value
-
     if (value == this.value) Some(this) else {
-      l match {
-        case Some(bt) => Some(bt)
-        case _ => r match {
-          case Some(bt) => Some(bt)
-          case _ => None
-        }
-      }
+      left.find(value).orElse(right.find(value))
     }
   }
 
@@ -119,7 +109,7 @@ case class BTree(node: Node) {
 
   lazy val min: Int = node.min
 
-  def find(value: Int): Option[Node] = node find value
+  def find(value: Int): Option[Node] = node.find(value)
 
 }
 
