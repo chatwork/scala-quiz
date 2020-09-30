@@ -60,9 +60,9 @@ case class Branch(left: Node, value: Int, right: Node) extends Node {
 
   val avg: Double = sum / size
 
-  val max: Int = List(left.max, right.max, value).max
+  val max: Int = if (right.max < value) value else right.max
 
-  val min: Int = List(left.max, right.max, value).min
+  val min: Int = if (left.min > value) value else left.min
 
   def find(value: Int): Option[Node] = {
     if (value == this.value) Some(this) else {
