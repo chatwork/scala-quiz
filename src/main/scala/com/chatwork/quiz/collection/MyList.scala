@@ -5,7 +5,7 @@ import com.chatwork.quiz.MyOption
 sealed trait MyList[+A] {
 
   // Easy
-  def length: Int = ???
+  def length: Int = MyList().length
 
   // Normal
   def foldLeft[B](z: B)(f: (B, A) => B): B = ???
@@ -21,7 +21,8 @@ sealed trait MyList[+A] {
   // scalastyle:on
 
   // Normal
-  def reverse: MyList[A] = ???
+  def reverse: MyList[A]  =  ???
+
 
   // Normal
   // scalastyle:off
@@ -36,6 +37,7 @@ sealed trait MyList[+A] {
 
   // Normal
   def filter(f: A => Boolean): MyList[A] = ???
+
 
   // Normal: 条件 - filterと同様の実装でも構いません。
   // Hard:   条件 - 中間リストを生成しないように実装してください。
@@ -56,9 +58,12 @@ case class MyCons[+A](head: A, tail: MyList[A]) extends MyList[A]
 object MyList {
 
   // Easy
-  def empty[A]: MyList[A] = ???
+  def empty[A]: MyList[A] = MyList()
 
   // Normal
-  def apply[A](as: A*): MyList[A] = ???
+  def apply[A](as: A*): MyList[A] = {
+    if (as.isEmpty) MyNil
+    else MyCons(as.head, apply(as.tail: _*))
+  }
 
 }
