@@ -54,15 +54,30 @@ sealed trait Node {
   */
 case class Branch(left: Node, value: Int, right: Node) extends Node {
 
-  val size: Int = ???
+  val size: Int = {
+    left.size + right.size + 1
+  }
 
-  val sum: Int = ???
+  val sum: Int = {
+    left.sum + right.sum + value
+  }
 
-  val avg: Double = ???
+  val avg: Double = {
+    sum / size
+  }
 
-  val max: Int = ???
+  val max: Int = {
+    if (right.max < value) {
+      value
+    } else right.max
+  }
 
-  val min: Int = ???
+  val min: Int = {
+    if (left.min > value) {
+      value
+    } else left.min
+  }
+
 
   def find(value: Int): Option[Node] = ???
 

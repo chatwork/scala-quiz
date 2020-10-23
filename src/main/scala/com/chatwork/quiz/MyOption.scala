@@ -104,7 +104,7 @@ case object MyNone extends MyOption[Nothing] {
 
   def get: Nothing = throw new NoSuchElementException
 
-  def isEmpty: Boolean = false
+  def isEmpty: Boolean = true
 
 }
 
