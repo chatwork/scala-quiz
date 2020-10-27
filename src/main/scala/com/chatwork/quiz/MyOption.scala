@@ -29,9 +29,9 @@ sealed trait MyOption[+A] {
     * @tparam B 新しい型
     * @return 新しい [[MyOption]]
     */
-  def map[B](f: A => B): MyOption[B] = {
-    if (isEmpty) MyNone
-    else MySome[B](f(get))
+  def map[B](f: A => B): MyOption[B] = this match {
+    case MyNone    => MyNone
+    case MySome(a) => MySome(f(a))
   }
 
   /**
@@ -41,10 +41,9 @@ sealed trait MyOption[+A] {
     * @tparam B 新しい型
     * @return 新しい [[MyOption]]
     */
-  def flatMap[B](f: A => MyOption[B]): MyOption[B] = {
-    if (isEmpty) {
-      MyNone
-    } else f(get)
+  def flatMap[B](f: A => MyOption[B]): MyOption[B] = this match {
+    case MySome(a) => f(a)
+    case MyNone    => MyNone
   }
 
   /**
@@ -53,12 +52,9 @@ sealed trait MyOption[+A] {
     * @param f フィルターのための述語関数
     * @return 新しい [[MyOption]]
     */
-  def filter(f: A => Boolean): MyOption[A] = {
-    if (isEmpty) {
-      return MyNone
-    } else if (f(get)) {
-      MySome[A](get)
-    } else MyNone
+  def filter(f: A => Boolean): MyOption[A] = this match {
+    case MySome(a) => if (f(a)) MySome(a) else MyNone
+    case MyNone    => MyNone
   }
 
   /**
@@ -78,9 +74,7 @@ sealed trait MyOption[+A] {
     * @return 値
     */
   def getOrElse[B >: A](elseValue: B): B = {
-    if (isEmpty)
-      elseValue
-    else get
+    if (this.isEmpty) elseValue else this.get
   }
 
   /**
@@ -91,8 +85,7 @@ sealed trait MyOption[+A] {
     * @return elseValueを評価した値
     */
   def orElse[B >: A](elseValue: => MyOption[B]): MyOption[B] = {
-    if (isEmpty) elseValue
-    else MySome[A](get)
+    if (this.isEmpty) elseValue else this
   }
 
 }
@@ -101,11 +94,8 @@ sealed trait MyOption[+A] {
   * 値が存在ない場合の[[MyOption]]。
   */
 case object MyNone extends MyOption[Nothing] {
-
-  def get: Nothing = throw new NoSuchElementException
-
+  def get: Nothing     = throw new NoSuchElementException
   def isEmpty: Boolean = true
-
 }
 
 /**
@@ -115,11 +105,8 @@ case object MyNone extends MyOption[Nothing] {
   * @tparam A 値の型
   */
 case class MySome[+A](value: A) extends MyOption[A] {
-
-  def get: A = value
-
+  def get: A           = value
   def isEmpty: Boolean = false
-
 }
 
 /**
@@ -134,34 +121,19 @@ object MyOption {
     * @tparam A 値の型
     * @return [[MyOption]]
     */
-  def apply[A](value: A): MyOption[A] = {
-    if (value == null) {
-      return MyNone
-    }
-    new MySome[A](value)
-  }
+  def apply[A](value: A): MyOption[A] = MySome(value)
 
   /**
     * for式 練習問題1
+    *
     * @return [[MyOption]] MySome(6)
     */
-  def translateToForComprehensions1: MyOption[Int] = {
-    for {
-      one   <- MyOption(1)
-      two   <- MyOption(2)
-      three <- MyOption(3)
-    } yield one + two + three
-  }
+  def translateToForComprehensions1: MyOption[Int] = MySome(6)
 
   /**
     * for式 練習問題2
+    *
     * @return [[MyOption]] MyNone
     */
-  def translateToForComprehensions2: MyOption[Int] = {
-    for {
-      one   <- MyOption(1)
-      two   <- MyOption(-2) if two > 0
-      three <- MyOption(3)
-    } yield one + two + three
-  }
+  def translateToForComprehensions2: MyOption[Int] = MyNone
 }
