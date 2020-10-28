@@ -56,9 +56,9 @@ case class MyCons[+A](head: A, tail: MyList[A]) extends MyList[A]
 object MyList {
 
   // Easy
-  def empty[A]: MyList[A] = ???
+  def empty[A]: MyList[A] = MyNil
 
   // Normal
-  def apply[A](as: A*): MyList[A] = ???
+  def apply[A](as: A*): MyList[A] = as.foldRight(MyNil)((crr, acc) => MyCons(crr, acc))
 
 }
