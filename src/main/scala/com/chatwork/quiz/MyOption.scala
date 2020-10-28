@@ -58,12 +58,12 @@ sealed trait MyOption[+A] {
   }
 
   /**
-   * 値が存在する場合に、値をフィルタリングする。
-   * 本来であれば中間状態を作成しないものだが今回はfilterで実装する
-   *
-   * @param f フィルターのための述語関数
-   * @return 新しい [[MyOption]]
-   */
+    * 値が存在する場合に、値をフィルタリングする。
+    * 本来であれば中間状態を作成しないものだが今回はfilterで実装する
+    *
+    * @param f フィルターのための述語関数
+    * @return 新しい [[MyOption]]
+    */
   def withFilter(f: A => Boolean): MyOption[A] = filter(f)
 
   /**
@@ -95,8 +95,7 @@ sealed trait MyOption[+A] {
   */
 case object MyNone extends MyOption[Nothing] {
 
-  def get: Nothing = throw new NoSuchElementException
-
+  def get: Nothing     = throw new NoSuchElementException
   def isEmpty: Boolean = true
 
 }
@@ -109,8 +108,7 @@ case object MyNone extends MyOption[Nothing] {
   */
 case class MySome[+A](value: A) extends MyOption[A] {
 
-  def get: A = value
-
+  def get: A           = value
   def isEmpty: Boolean = false
 
 }
@@ -128,7 +126,7 @@ object MyOption {
     * @return [[MyOption]]
     */
   def apply[A](value: A): MyOption[A] = value match {
-    case null => MyNone
+    case null  => MyNone
     case value => MySome(value)
   }
 
@@ -139,9 +137,9 @@ object MyOption {
   def translateToForComprehensions1: MyOption[Int] = MySome(6)
 
   /**
-   * for式 練習問題2
-   * @return [[MyOption]] MyNone
-   */
+    * for式 練習問題2
+    * @return [[MyOption]] MyNone
+    */
   def translateToForComprehensions2: MyOption[Int] = MyNone
 
 }
