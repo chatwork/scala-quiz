@@ -59,6 +59,6 @@ object MyList {
   def empty[A]: MyList[A] = MyNil
 
   // Normal
-  def apply[A](as: A*): MyList[A] = as.foldRight(MyNil)((crr, acc) => MyCons(crr, acc))
+  def apply[A](as: A*): MyList[A] = as.foldRight(MyNil: MyList[A])((crr, acc) => MyCons(crr, acc))
 
 }
