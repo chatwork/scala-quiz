@@ -1,11 +1,10 @@
 package com.chatwork.quiz.misc
 
-import org.scalatest.funspec.AnyFunSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.{Matchers, FunSpec}
 
 import scala.math.Ordering.IntOrdering
 
-class BTreeSpec extends AnyFunSpec with Matchers {
+class BTreeSpec extends FunSpec with Matchers  {
 
   describe("BTree#size") {
     it("should return the number of elements in the BTree") {
