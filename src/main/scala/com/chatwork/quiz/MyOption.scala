@@ -114,6 +114,7 @@ case class MySome[+A](value: A) extends MyOption[A] {
   *
   *
   *
+  *
   */
 object MyOption {
 
