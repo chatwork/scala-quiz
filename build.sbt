@@ -15,5 +15,8 @@ lazy val root: Project = (project in file("."))
       ),
     libraryDependencies ++= Seq(
         "org.scalatest" %% "scalatest" % "3.1.1" % Test
-      )
+      ),
+    coverageEnabled := true
+//    sonarUseExternalConfig := true,
+//    aggregate in sonarScan := false
   )
