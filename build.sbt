@@ -1,5 +1,3 @@
-//import sbtsonar.SonarPlugin.autoImport._
-
 lazy val root: Project = (project in file("."))
   .settings(
     organization := "com.chatwork",
@@ -17,6 +15,4 @@ lazy val root: Project = (project in file("."))
         "org.scalatest" %% "scalatest" % "3.1.1" % Test
       ),
     coverageEnabled := true
-//    sonarUseExternalConfig := true,
-//    aggregate in sonarScan := false
   )

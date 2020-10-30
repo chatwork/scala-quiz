@@ -1,8 +1,15 @@
 package com.chatwork.quiz
 
-import org.scalatest.{Matchers, FunSpec}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class MyOptionSpec extends FunSpec with Matchers {
+class MyOptionSpec extends AnyFunSpec with Matchers {
+
+  describe("MyOption#apply") {
+    it("should return MyNone if it's null") {
+      MyOption(null) shouldBe MyNone
+    }
+  }
 
   describe("MyOption#get") {
     it("should return a value if it's not empty") {
@@ -66,6 +73,36 @@ class MyOptionSpec extends FunSpec with Matchers {
     }
     it("should return the default value if it is empty") {
       MyNone.orElse(MySome(20)) shouldBe MySome(20)
+    }
+  }
+
+  describe("MyOption#translateToForComprehensions1") {
+    it("should return MySome(6)") {
+      val expected =
+        MyOption(1).flatMap { one =>
+          MyOption(2).flatMap { two =>
+            MyOption(3).map { three =>
+              one + two + three
+            }
+          }
+        }
+      MyOption.translateToForComprehensions1 shouldBe expected
+      MyOption.translateToForComprehensions1 shouldBe MySome(6)
+    }
+  }
+
+  describe("MyOption#translateToForComprehensions2") {
+    it("should return MyNone") {
+      val expected =
+        MyOption(1).flatMap { one =>
+          MyOption(-2).withFilter(_ > 0).flatMap { two =>
+            MyOption(3).map { three =>
+              one + two + three
+            }
+          }
+        }
+      MyOption.translateToForComprehensions2 shouldBe expected
+      MyOption.translateToForComprehensions2 shouldBe MyNone
     }
   }
 
