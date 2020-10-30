@@ -5,12 +5,6 @@ import org.scalatest.matchers.should.Matchers
 
 class MyOptionSpec extends AnyFunSpec with Matchers {
 
-  describe("MyOption#apply") {
-    it("should return MyNone if it's null") {
-      MyOption(null) shouldBe MyNone
-    }
-  }
-
   describe("MyOption#get") {
     it("should return a value if it's not empty") {
       MySome(100).get shouldBe 100
