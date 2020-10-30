@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: chatwork/sbt-ci-openjdk8:jdk8u252-b09-1.3.10
+    steps:
+      - checkout
+      - run:
+          name: "unit tests"
+          command: sbt -mem 2048 test coverage coverageReport
+      - sonarcloud/scan
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+
+workflows:
+  main:
+    jobs:
+      - build:
+          context: SonarCloud
