@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "unit tests"
+          name: "coverage"
           command: sbt -mem 2048 test coverage coverageReport
       - sonarcloud/scan
 
