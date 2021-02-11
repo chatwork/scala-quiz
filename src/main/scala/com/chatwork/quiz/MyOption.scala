@@ -114,7 +114,12 @@ object MyOption {
     * @tparam A 値の型
     * @return [[MyOption]]
     */
-  def apply[A](value: A): MyOption[A] = ???
+  def apply[A](value: A): MyOption[A] = {
+    if (value == null) {
+      return MyNone
+    }
+    new MySome[A](value)
+  }
 
   /**
     * for式 練習問題1
