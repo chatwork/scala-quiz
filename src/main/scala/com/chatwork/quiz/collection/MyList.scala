@@ -35,7 +35,12 @@ sealed trait MyList[+A] {
 
   // Normal
   // scalastyle:off
-  def ++[B >: A](b: MyList[B]): MyList[B] = ???
+  def ++[B >: A](b: MyList[B]): MyList[B] = {
+    this match {
+      case MyNil => b
+      case MyCons (h, t) => MyCons(h, t ++ b)
+    }
+  }
   // scalastyle:on
 
   // Normal
@@ -47,7 +52,12 @@ sealed trait MyList[+A] {
   }
 
   // Normal
-  def flatMap[B](f: A => MyList[B]): MyList[B] = ???
+  def flatMap[B](f: A => MyList[B]): MyList[B] = {
+    this match {
+      case MyNil => MyNil
+      case MyCons (h, t) => f(h) ++ t.flatMap(f)
+    }
+  }
 
   // Normal
   def filter(f: A => Boolean): MyList[A] = {
